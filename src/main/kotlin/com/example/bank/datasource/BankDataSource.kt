@@ -4,5 +4,5 @@ import com.example.bank.model.Bank
 
 interface BankDataSource {
 
-    fun getBanks(): Collection<Bank>
+    fun retrieveBanks(): Collection<Bank>
 }
