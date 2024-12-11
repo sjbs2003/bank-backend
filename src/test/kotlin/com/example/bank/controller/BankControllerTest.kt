@@ -1,6 +1,5 @@
 package com.example.bank.controller
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -26,5 +25,16 @@ internal class BankControllerTest {
                 content { contentType(MediaType.APPLICATION_JSON) }
                 jsonPath("$[0].accountNumber") { value("9188") }
             }
+    }
+
+    @Test
+    fun `should return the bank with the given account number`() {
+        // given
+        val accountNumber = 8810
+
+        // when /then
+        mockMvc.get("/api/banks/$accountNumber")
+            .andDo { print() }
+            .andExpect { status { isOk() } }
     }
 }
